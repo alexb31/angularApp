@@ -9,7 +9,7 @@ import { User } from '../../models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  showExtended: boolean = false;
+  showExtended: boolean = true;
   loaded: boolean = false;
   enableAdd: boolean = true;
   currentClasses: {};
@@ -29,7 +29,8 @@ export class UsersComponent implements OnInit {
               state: 'MA'
           },
           isActive: true,
-          registered: new Date('12/12/2018 08:30:00')
+          registered: new Date('12/12/2018 08:30:00'),
+          hide: true
       },
       {
         firstName: 'Jane',
@@ -41,7 +42,8 @@ export class UsersComponent implements OnInit {
             state: 'CA'
         },
         isActive: false,
-        registered: new Date('01/02/2018 08:30:00')
+        registered: new Date('01/02/2018 08:30:00'),
+        hide: true
       },
       {
         firstName: 'Jack',
@@ -53,7 +55,8 @@ export class UsersComponent implements OnInit {
             state: 'MI'
         },
         isActive: true,
-        registered: new Date('11/25/2016 14:30:00')
+        registered: new Date('11/25/2016 14:30:00'),
+        hide: true
       }
       ];
 
@@ -66,5 +69,10 @@ export class UsersComponent implements OnInit {
 
   fireEvent(e) {
     console.log(e.type);
+  }
+
+  toggleHide(user) {
+    user.hide = !user.hide;
+    console.log('Clicked');
   }
 }
